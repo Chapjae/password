@@ -15,30 +15,36 @@ generatePassword = () => {
   
   let length = prompt("Choose a password length between 8 and 128");
   let stringParse = parseFloat(length);
-
+  // let confirmSpecial = confirm("Would you like to use special characters?")
+  let specialChar = confirm ("Would you like to use special characters?")
+  let upperChar = confirm ("Would you like to use uppercase characters?")
+  let lowerChar = confirm ("Would you like to use lowercase characters?")
+  let numberChar = confirm ("Would you like to use numbers?")
   if (stringParse >= 8 && stringParse < 128) { 
     passwordText.length = stringParse;
     } else {
       alert("Your password must be between 8 and 128 characters!")
       }
 
-
-  // if (confirm ("Would you like to use special characters?") == true) {
-  //   passwordText.push(specialChar[Math.floor(Math.random() * specialChar.length)])
-  //   } else if (confirm("Would you like to use uppercase characters?") == true) {
-  //     passwordText.push(upperChar[Math.floor(Math.random() * upperChar.length)])
-  //   } else if (confirm("Would you like to use lowercase characters?") == true) {
-  //     passwordText.push(lowerChar.specialChar[Math.floor(Math.random() * lowerChar.length)])
-  //   } else if (confirm("Would you like to use number?") == true) {
-  //     passwordText.push(numbers[Math.floor(Math.random() * numbers.length)])
-  //   }
+  if (specialChar == true) {
+    passwordText.push(specialChar[Math.floor(Math.random() * specialChar.length)])
+    } 
   
-debugger
+  if (upperChar == true) {
+      passwordText.push(upperChar[Math.floor(Math.random() * upperChar.length)])
+    }  
+  
+  if (lowerChar == true) {
+      passwordText.push(lowerChar.specialChar[Math.floor(Math.random() * lowerChar.length)])
+    } 
+  
+  if (numberChar == true) {
+      passwordText.push(numbers[Math.floor(Math.random() * numbers.length)])
+    }
   
   
-  // let specialChar = confirm ("Would you like to use special characters?")
-  // let upperChar = prompt ("Would you like to use uppercase characters?")
-  // let lowerChar = prompt ("Would you like to use lowercase characters?")
+  
+  
 }
 // Write password to the #password input
 function writePassword() {
