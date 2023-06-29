@@ -4,6 +4,7 @@ var specialChar = "\"\ !#$%&'()*+,-./:;<=>?@[]^_`{|}~"
 var upperChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var lowerChar = "abcdefghijklmnopqrstuvwxyz"
 var numbers = "1234567890"
+var everyChar = "\"\ !#$%&'()*+,-./:;<=>?@[]^_`{|}~ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
 var passwordText = '';
  
   
@@ -15,6 +16,7 @@ function randomSelector(str) {
   var randomChar = str.charAt(randomIdx);
   return randomChar;
 }
+
 function confirmCharacters(specialCharConfirm, upperCharConfirm, lowerCharConfirm, numberCharConfirm) {
   var specialCharConfirm = confirm ("Would you like to use special characters?")
   var upperCharConfirm = confirm ("Would you like to use uppercase characters?")
@@ -38,20 +40,18 @@ function confirmCharacters(specialCharConfirm, upperCharConfirm, lowerCharConfir
 }
 
 function generatePassword() {
-  var length = prompt("Choose a password length between 8 and 128");
-  var lengthParse = parseInt(length)
-  
-  
-  
- 
+  var passwordLength = prompt("Choose a password length between 8 and 128");
+  var lengthParse = parseInt(passwordLength)
+
   if (lengthParse >= 8 && lengthParse <= 128) {
     confirmCharacters()
+    for (var i = passwordText.length; i < lengthParse; i++) {
+      var passwordFill = Math.floor(Math.random() * everyChar.length)
+      passwordFill += passwordText
+    }
     } else {
       alert("Your password must be between 8 and 128 characters!")
         }
- 
-        
-  return passwordText 
 }
 // Write password to the #password input
 function writePassword() {
