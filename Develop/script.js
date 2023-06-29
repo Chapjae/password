@@ -21,44 +21,37 @@ function generatePassword() {
   var length = prompt("Choose a password length between 8 and 128");
   var lengthParse = parseInt(length)
   var passwordText = '';
+
   
   var specialCharConfirm = confirm ("Would you like to use special characters?")
   var upperCharConfirm = confirm ("Would you like to use uppercase characters?")
   var lowerCharConfirm = confirm ("Would you like to use lowercase characters?")
   var numberCharConfirm = confirm ("Would you like to use numbers?")
  
+  
+  
+  
+  
   if (lengthParse >= 8 && lengthParse <= 128) {
     if (specialCharConfirm == true) {
-      randomSelector(specialChar)
+      passwordText += randomSelector(specialChar)
       }
     if (upperCharConfirm == true) {
-      randomSelector(upperChar)
+      passwordText += randomSelector(upperChar)
       }
     if (lowerCharConfirm == true) {
-      randomSelector(lowerChar)
+      passwordText += randomSelector(lowerChar)
       }
     if (numberCharConfirm == true) {
-      randomSelector(numbers)
+      passwordText += randomSelector(numbers)
       }
   } else {
       alert("Your password must be between 8 and 128 characters!")
       }
-
-  
-
-  // if (upperChar == true) {
-  //     passwordText += upperChar[Math.floor(Math.random() * upperChar.length)]
-  //   }
       
-  // if (lowerChar == true) {
-  //       passwordText.push(lowerChar[Math.floor(Math.random() * lowerChar.length)])
-  //     } 
-    
-  // if (numberChar == true) {
-  //       passwordText.push(numberChar[Math.floor(Math.random() * numberChar.length)])
-  //     }
-          
-  return passwordText
+    passwordText.valueOf()
+
+  return passwordText 
 }
 // Write password to the #password input
 function writePassword() {
