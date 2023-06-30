@@ -25,7 +25,7 @@ function generatePassword() {
   // Check to see if the user enters a valid password length.
   if (lengthParse < 8 || lengthParse > 128) {
     alert("Your password must be between 8 and 128 characters!");
-    return;
+    return '';
     } else {
     var specialCharConfirm = confirm ("Would you like to use special characters?");
     var upperCharConfirm = confirm ("Would you like to use uppercase characters?");
