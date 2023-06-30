@@ -17,41 +17,38 @@ function randomSelector(str) {
   return randomChar;
 }
 
-function confirmCharacters(specialCharConfirm, upperCharConfirm, lowerCharConfirm, numberCharConfirm) {
+function generatePassword() {
+  var passwordText = ""
+  var passwordLength = prompt("Choose a password length between 8 and 128");
+  var lengthParse = parseInt(passwordLength)
+
   var specialCharConfirm = confirm ("Would you like to use special characters?")
   var upperCharConfirm = confirm ("Would you like to use uppercase characters?")
   var lowerCharConfirm = confirm ("Would you like to use lowercase characters?")
   var numberCharConfirm = confirm ("Would you like to use numbers?")   
-  
-  if (specialCharConfirm == true) {
-      passwordText += randomSelector(specialChar)
-      if (upperCharConfirm == true) {
-        passwordText += randomSelector(upperChar)
-        if (lowerCharConfirm == true) {
-          passwordText += randomSelector(lowerChar)
-          if (numberCharConfirm == true) {
+
+      if (lengthParse < 8 || lengthParse > 128) {
+        alert("Your password must be between 8 and 128 characters!")
+        return;
+          } else {
+            if (specialCharConfirm) {
+            passwordText += randomSelector(specialChar)
+            if (upperCharConfirm) {
+            passwordText += randomSelector(upperChar)
+            if (lowerCharConfirm) {
+            passwordText += randomSelector(lowerChar)
+            if (numberCharConfirm) {
             passwordText += randomSelector(numbers)
-            } else {
-            alert("Please choose at least one type of character.")
-          }
-        } 
-      }
-    }
-}
-
-function generatePassword() {
-  var passwordLength = prompt("Choose a password length between 8 and 128");
-  var lengthParse = parseInt(passwordLength)
-
-  if (lengthParse >= 8 && lengthParse <= 128) {
-    confirmCharacters()
-    for (var i = passwordText.length; i < lengthParse; i++) {
-      var passwordFill = Math.floor(Math.random() * everyChar.length)
-      passwordFill += passwordText
-    }
-    } else {
-      alert("Your password must be between 8 and 128 characters!")
+              }
+             for (var i = passwordText; i < lengthParse; i++) {
+              var passwordFill = randomSelector(everyChar)
+              passwordFill += passwordText
+              }
+            }
+          } 
         }
+      }
+  return passwordText;
 }
 // Write password to the #password input
 function writePassword() {
