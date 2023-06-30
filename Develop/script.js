@@ -18,7 +18,6 @@ function randomSelector(str) {
 
 function generatePassword() {
   var passwordText = ""
-  var textChosen = ""
   var passwordLength = prompt("Choose a password length between 8 and 128");
   var lengthParse = parseInt(passwordLength)
  
@@ -30,28 +29,32 @@ function generatePassword() {
     var upperCharConfirm = confirm ("Would you like to use uppercase characters?")
     var lowerCharConfirm = confirm ("Would you like to use lowercase characters?")
     var numberCharConfirm = confirm ("Would you like to use numbers?")   
-
+    
+    var textChosen = "";
+      
       if (specialCharConfirm) {
-        passwordText += randomSelector(specialChar)
         textChosen += specialChar
-      if (upperCharConfirm) {
-        passwordText += randomSelector(upperChar)
-        textChosen += upperChar
-      if (lowerCharConfirm) {
-        passwordText += randomSelector(lowerChar)
-        textChosen += lowerChar
-      if (numberCharConfirm) {
-        passwordText += randomSelector(numbers)
-        textChosen += numbers    
-          }
-          for (var i = 0; i < lengthParse; i++) {
-          passwordText += randomSelector(textChosen)
-            }
-          }
-        } 
       }
-    }
+      if (upperCharConfirm) {
+        textChosen += upperChar
+      }
+      if (lowerCharConfirm) {
+        textChosen += lowerChar
+      }
+      if (numberCharConfirm) {
+        textChosen += numbers
+      }   
+      
+      if (textChosen.length > 0 ) {
+        for (var i = 0; i < lengthParse; i++) {
+          passwordText += randomSelector(textChosen)
+        }
+      } else {
+        alert("You must choose at least one character type");
+        return '';
+      }
   return passwordText;
+  }
 }
 // Write password to the #password input
 function writePassword() {
